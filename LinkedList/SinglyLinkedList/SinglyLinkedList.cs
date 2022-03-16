@@ -36,7 +36,28 @@ namespace DataStructures.LinkedList.SinglyLinkedList
             Count++;
             return;
         }
+        public void AddLast(T value)
+        {
+            SinglyLinkedListNode<T> node = new SinglyLinkedListNode<T>(value);
+            SinglyLinkedListNode<T> temp = Head;
 
+            node.Value = value;
+            node.Next = null;
+
+            if (Head == null)
+            {
+                Head = node;
+                Count++;
+            }
+            else if (Head != null)
+            {
+                while (temp.Next != null)
+                {
+                    temp = temp.Next;
+                }
+                temp.Next = node;
+            }
+        }
         public IEnumerator<T> GetEnumerator()
         {
             return new SinglyLinkedListEnumerator<T>(Head);
